@@ -9,16 +9,18 @@ export interface Product {
     images: Image[]
   };
   
-  export interface Image {
-    id: string;
-    url: string;
-  }
-  
+
   export interface Billboard {
     id: string;
     label: string;
     imageUrl: string;
   };
+  
+
+  export interface Image {
+    id: string;
+    url: string;
+  }
   
   export interface Category {
     id: string;
