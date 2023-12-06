@@ -6,6 +6,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "i.pinimg.com",
       "marketplace.canva.com",
+      "cdn.dribbble.com",
     ],
   },
 };
