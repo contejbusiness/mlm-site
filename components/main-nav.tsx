@@ -13,14 +13,22 @@ interface MainNavProps {
 const MainNav: React.FC<MainNavProps> = ({ data }) => {
   const pathname = usePathname();
 
-  const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
-    label: route.name,
-    active: pathname === `/category/${route.id}`,
-  }));
+  // const routes = data.map((route) => ({
+  //   href: `/category/${route.id}`,
+  //   label: route.name,
+  //   active: pathname === `/category/${route.id}`,
+  // }));
+
+  const routes = [
+    {
+      href: `/plans`,
+      label: "Premium Plans",
+      active: "/plans",
+    },
+  ];
 
   return (
-    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
+    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 flex-1">
       {routes.map((route) => (
         <Link
           key={route.href}

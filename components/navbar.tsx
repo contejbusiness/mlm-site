@@ -16,7 +16,12 @@ const Navbar = async () => {
             <p className="font-bold text-xl">STORE</p>
           </Link>
           <MainNav data={categories} />
-          <NavbarActions />
+          <div className="flex items-center gap-4 hover:cursor-pointer">
+            <div className="px-5 py-2 border rounded-[50px] flex items-center gap-4">
+              <span>2000</span> <span>| points</span>
+            </div>
+            <NavbarActions />
+          </div>
         </div>
       </Container>
     </div>
