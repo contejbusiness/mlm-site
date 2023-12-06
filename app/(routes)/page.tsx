@@ -32,7 +32,7 @@ const HomePage = async () => {
     "https://cdn.dribbble.com/users/978006/screenshots/2898873/media/025080276a8aea914c3a67babcc2319c.jpg?resize=700x525&vertical=center",
   ];
 
-  let products = [
+  let _products = [
     {
       name: "Tasty Fresh Towels",
 
@@ -57,7 +57,7 @@ const HomePage = async () => {
     {
       name: "Awesome Fresh Bike",
 
-      price: "7.00",
+      price: "579.00",
       isFeatured: false,
       id: "4",
     },
@@ -71,7 +71,7 @@ const HomePage = async () => {
     {
       name: "Rustic Bronze Chicken",
 
-      price: "94.00",
+      price: "594.00",
       isFeatured: true,
       id: "6",
     },
@@ -175,7 +175,7 @@ const HomePage = async () => {
     },
   ];
 
-  products = products.map((product, index) => ({
+  const products = _products.map((product, index) => ({
     ...product,
     images: [
       {
@@ -221,7 +221,7 @@ const HomePage = async () => {
       <div className="space-y-10 pb-10">
         <Billboard data={billboard} />
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-          <ProductList title="Featured Products" items={products} />
+          <ProductList title="Trending Products" items={products} />
         </div>
       </div>
     </Container>
