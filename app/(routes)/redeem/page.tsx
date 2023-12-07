@@ -95,10 +95,11 @@ const RedeemPage = () => {
         <Separator />
 
         <div>
-          <p className="my-4">Refferals</p>
-          <Table />
+          <h2 className="scroll-m-20 border-b pb-2 text-md font-semibold tracking-tight first:mt-0">
+            Previous Redeems
+          </h2>
 
-          <p className="flex items-center my-5">Total Earning : {<Currency value={50} />}</p>
+          <Table />
         </div>
       </div>
     </Container>

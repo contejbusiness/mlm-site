@@ -13,23 +13,21 @@ import Currency from "@/components/ui/currency";
 const TableList = () => {
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow className="bg-gray-900 text-white">
-          <TableHead className="text-white">Name</TableHead>
-          <TableHead className="text-white">Plan</TableHead>
-          <TableHead className="text-white">Purchased Plan</TableHead>
-          <TableHead className="text-right text-white">Reward</TableHead>
+          <TableHead className="text-white">Date</TableHead>
+          <TableHead className="text-white">Amount</TableHead>
+
+          <TableHead className="text-right text-white">Status</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody className="bg-gray-100">
         <TableRow>
-          <TableCell className="font-medium">Aman Kumar</TableCell>
-          <TableCell>Level 1</TableCell>
-          <TableCell>YES</TableCell>
-          <TableCell className="text-right">
+          <TableCell className="font-medium">10-12-2023</TableCell>
+          <TableCell>
             <Currency value={50} />
           </TableCell>
+          <TableCell className="text-right">Pending</TableCell>
         </TableRow>
       </TableBody>
     </Table>
