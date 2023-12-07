@@ -22,7 +22,7 @@ import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
 import Image from "next/image";
-import { Table } from "@/components/ui/table";
+
 import TableList from "./components/table-list";
 
 type BillboardFormValues = z.infer<typeof formSchema>;
@@ -103,12 +103,13 @@ const BalancePage = () => {
                 </FormItem>
               )}
             />
-            <div className="md:grid md:grid-cols-3 gap-8">
+
+            <div className="flex items-end gap-4 pb-10">
               <FormField
                 control={form.control}
                 name="label"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="flex-1">
                     <FormLabel>Amount</FormLabel>
                     <FormControl>
                       <Input
@@ -121,10 +122,11 @@ const BalancePage = () => {
                   </FormItem>
                 )}
               />
+
+              <Button disabled={loading} className="" type="submit">
+                Send
+              </Button>
             </div>
-            <Button disabled={loading} className="ml-auto" type="submit">
-              Send
-            </Button>
           </form>
         </Form>
 
