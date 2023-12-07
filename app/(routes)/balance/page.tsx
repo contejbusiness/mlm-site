@@ -22,6 +22,8 @@ import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
 import Image from "next/image";
+import { Table } from "@/components/ui/table";
+import TableList from "./components/table-list";
 
 type BillboardFormValues = z.infer<typeof formSchema>;
 
@@ -125,6 +127,10 @@ const BalancePage = () => {
             </Button>
           </form>
         </Form>
+
+        <Separator />
+
+        <TableList />
       </div>
     </Container>
   );

@@ -98,7 +98,7 @@ const RedeemPage = () => {
           <p className="my-4">Refferals</p>
           <Table />
 
-          <p className="flex items-center my-5">Total Earning : {<Currency value={0} />}</p>
+          <p className="flex items-center my-5">Total Earning : {<Currency value={50} />}</p>
         </div>
       </div>
     </Container>

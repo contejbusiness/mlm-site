@@ -16,20 +16,20 @@ const TableList = () => {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow className="bg-gray-900 text-white">
-          <TableHead className="text-white">Name</TableHead>
-          <TableHead className="text-white">Plan</TableHead>
-          <TableHead className="text-white">Purchased Plan</TableHead>
-          <TableHead className="text-right text-white">Reward</TableHead>
+          <TableHead className="text-white">Amount</TableHead>
+          <TableHead className="text-white">Time</TableHead>
+          <TableHead className="text-white">Screenshot</TableHead>
+          <TableHead className="text-right text-white">Status</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody className="bg-gray-100">
         <TableRow>
-          <TableCell className="font-medium">Aman Kumar</TableCell>
-          <TableCell>Level 1</TableCell>
-          <TableCell>YES</TableCell>
-          <TableCell className="text-right">
-            <Currency value={50} />
+          <TableCell className="font-medium">
+            <Currency value={1000} />
           </TableCell>
+          <TableCell>10:32 AM - 20-DEC-2023</TableCell>
+          <TableCell>View</TableCell>
+          <TableCell className="text-right">PENDING</TableCell>
         </TableRow>
       </TableBody>
     </Table>
