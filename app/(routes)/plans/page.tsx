@@ -34,6 +34,12 @@ const PlanPage = () => {
               reward={"300"}
               index={4}
             />
+             <PlanCard
+              name={"Level 5"}
+              price={"10000"}
+              reward={"500"}
+              index={5}
+            />
           </div>
         </div>
       </section>
