@@ -1,7 +1,10 @@
 import Container from "@/components/ui/container";
 import PlanCard from "./components/plan-card";
+import getPlans from "@/actions/get-plans";
 
-const PlanPage = () => {
+const PlanPage = async () => {
+  const plans = await getPlans();
+
   return (
     <Container>
       <section className="bg-white">
@@ -15,31 +18,15 @@ const PlanPage = () => {
             </p>
           </div>
           <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-            <PlanCard name={"Level 1"} price={"1000"} reward={"50"} index={1} />
-            <PlanCard
-              name={"Level 2"}
-              price={"2000"}
-              reward={"100"}
-              index={2}
-            />
-            <PlanCard
-              name={"Level 3"}
-              price={"3000"}
-              reward={"200"}
-              index={3}
-            />
-            <PlanCard
-              name={"Level 4"}
-              price={"5000"}
-              reward={"300"}
-              index={4}
-            />
-             <PlanCard
-              name={"Level 5"}
-              price={"10000"}
-              reward={"500"}
-              index={5}
-            />
+            {plans.map((plan, index) => (
+              <PlanCard
+                name={plan.name}
+                price={plan.price}
+                reward={plan.reward}
+                index={index}
+                key={plan.id}
+              />
+            ))}
           </div>
         </div>
       </section>

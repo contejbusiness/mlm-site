@@ -6,6 +6,7 @@ import { Urbanist } from "next/font/google";
 import ToastProvider from "@/providers/toast-provider";
 import ModalProvider from "@/providers/modal-provider";
 import Navbar from "@/components/ui/v2/navbar";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -20,15 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={font.className}>
-        <ToastProvider />
-        <ModalProvider />
-        {/* <Navbar /> */}
-        <Navbar />
-        {children}
-        <Footer />;
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={font.className}>
+          <ToastProvider />
+          <ModalProvider />
+          {/* <Navbar /> */}
+          <Navbar />
+          {children}
+          <Footer />;
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -1,12 +1,17 @@
-
 import ProductList from "@/components/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
+import { initialProfile } from "@/lib/initial-profile";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
   // const products = await getProducts({ isFeatured: true });\
+  try {
+    const data = await initialProfile();
+  } catch (error) {
+    console.log(error);
+  }
 
   let _images = [
     "https://cdn.dribbble.com/users/5155812/screenshots/11170892/media/782e4a339005a346509e3e76d6027436.jpg?resize=700x525&vertical=center",
