@@ -52,8 +52,8 @@ const TableList = () => {
         </TableRow>
       </TableHeader>
       <TableBody className="bg-gray-100">
-        {refferals.map((refferal) => (
-          <TableRow>
+        {refferals.map((refferal, index) => (
+          <TableRow key={index}>
             <TableCell className="font-medium">{refferal.name}</TableCell>
             <TableCell>
               {refferal.plan.length > 0 && (
