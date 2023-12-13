@@ -1,16 +1,23 @@
+import getRedeems from "@/actions/get-redeems";
 import ProductList from "@/components/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
 import { initialProfile } from "@/lib/initial-profile";
+import { redirectToSignIn } from "@clerk/nextjs";
+import LoadUserComponent from "@/components/load-user";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
-  // const products = await getProducts({ isFeatured: true });\
   try {
-    const data = await initialProfile();
+    await initialProfile();
   } catch (error) {
     console.log(error);
+  }
+
+  const user = await getRedeems();
+  if (!user) {
+    redirectToSignIn();
   }
 
   let _images = [
@@ -228,6 +235,7 @@ const HomePage = async () => {
           <ProductList title="Trending Products" items={products} />
         </div>
       </div>
+      <LoadUserComponent user={user} />
     </Container>
   );
 };

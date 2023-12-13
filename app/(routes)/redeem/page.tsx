@@ -1,9 +1,8 @@
 "use client";
 import Container from "@/components/ui/container";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import ImageUpload from "@/components/ui/image-upload";
 import {
   Form,
   FormControl,
@@ -22,9 +21,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
-import Image from "next/image";
 import Table from "./components/table-list";
-import Currency from "@/components/ui/currency";
+import useUser from "@/hooks/use-profile";
 
 type BillboardFormValues = z.infer<typeof formSchema>;
 
@@ -58,6 +56,8 @@ const RedeemPage = () => {
       setLoading(false);
     }
   };
+
+  const { user } = useUser();
 
   return (
     <Container>
@@ -99,7 +99,7 @@ const RedeemPage = () => {
             Previous Redeems
           </h2>
 
-          <Table />
+          {user && <div>{user?.id}</div>}
         </div>
       </div>
     </Container>

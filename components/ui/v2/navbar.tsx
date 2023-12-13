@@ -70,14 +70,11 @@ const Navbar = () => {
               <Link
                 key={route.href}
                 href={route.href}
-                className={cn(
-                  "block py-2 px-3 md:p-0 border-b"
-                )}
+                className={cn("block py-2 px-3 md:p-0 border-b")}
               >
                 {route.label}
               </Link>
             ))}
-            {/* Add more navigation items as needed */}
           </ul>
         </div>
       </div>
