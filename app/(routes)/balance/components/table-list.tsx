@@ -1,36 +1,54 @@
-import React from "react";
+"use client";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import Currency from "@/components/ui/currency";
+import { RequestBalance } from "@/types";
 
-const TableList = () => {
+import { useEffect, useState } from "react";
+
+interface Props {
+  requests: RequestBalance[];
+}
+
+const TableList: React.FC<Props> = ({ requests }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <Table>
-      <TableCaption>A list of your recent transactions.</TableCaption>
       <TableHeader>
         <TableRow className="bg-gray-900 text-white">
-          <TableHead className="text-white">Amount</TableHead>
           <TableHead className="text-white">Date</TableHead>
-          <TableHead className="text-white">Screenshot</TableHead>
+          <TableHead className="text-white">Amount</TableHead>
+
           <TableHead className="text-right text-white">Status</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody className="bg-gray-100">
-        <TableRow>
-          <TableCell className="font-medium">
-            <Currency value={1000} />
-          </TableCell>
-          <TableCell>20-DEC-2023</TableCell>
-          <TableCell>View</TableCell>
-          <TableCell className="text-right">PENDING</TableCell>
-        </TableRow>
+        {requests.map((request) => (
+          <TableRow key={request.id}>
+            <TableCell className="font-medium">
+              {new Date(request.createdAt).toLocaleDateString()}
+            </TableCell>
+            <TableCell>
+              <Currency value={request.amount} />
+            </TableCell>
+            <TableCell className="text-right">{request.status}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

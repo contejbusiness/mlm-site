@@ -1,7 +1,6 @@
 import getCurrentUser from "@/actions/get-user";
 import Container from "@/components/ui/container";
 import RedeemForm from "./components/redeem-form";
-import axios from "axios";
 import TableList from "./components/table-list";
 import { Separator } from "@/components/ui/separator";
 
@@ -14,7 +13,7 @@ const RedeemsPage = async () => {
 
       <Separator />
 
-      <div className="p-4">
+      <div className="p-2">
         {user.redeems && user.redeems.length > 0 ? (
           <TableList redeems={user.redeems} />
         ) : (
