@@ -1,9 +1,17 @@
 import Container from "@/components/ui/container";
 import PlanCard from "./components/plan-card";
 import getPlans from "@/actions/get-plans";
+import getCurrentUser from "@/actions/get-user";
+import PlanRefferalPage from "./components/plan-reffer";
 
 const PlanPage = async () => {
   const plans = await getPlans();
+
+  const user = await getCurrentUser();
+
+  if (user.plan != null) {
+    return <PlanRefferalPage />;
+  }
 
   return (
     <Container>
@@ -20,6 +28,7 @@ const PlanPage = async () => {
           <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
             {plans.map((plan, index) => (
               <PlanCard
+                id={plan.id}
                 name={plan.name}
                 price={plan.price}
                 reward={plan.reward}

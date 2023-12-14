@@ -9,11 +9,6 @@ export async function POST(req: Request) {
     const { userId }: { userId: string | null } = auth();
 
     const { amount, imageUrl } = await req.json();
-    console.log(
-      "🚀 ~ file: route.ts:12 ~ POST ~ amount, imageUrl:",
-      amount,
-      imageUrl
-    );
 
     if (!userId) return new NextResponse("Unauthorized", { status: 401 });
 
@@ -22,7 +17,7 @@ export async function POST(req: Request) {
       return new NextResponse("Image is required", { status: 400 });
 
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/requests/user_2ZGX6ALyoW0Y9mw37KfLQZoadsC`,
+      `${process.env.NEXT_PUBLIC_API_URL}/requests/${userId}`,
       {
         amount: Number(amount),
         imageUrl,

@@ -1,14 +1,16 @@
 import Currency from "@/components/ui/currency";
 import React from "react";
+import Link from "next/link";
 
 interface PlanCard {
+  id: string;
   name: string;
   reward: string;
   price: string;
   index: number;
 }
 
-const PlanCard: React.FC<PlanCard> = ({ name, reward, price, index }) => {
+const PlanCard: React.FC<PlanCard> = ({ id, name, reward, price, index }) => {
   return (
     <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
       <h3 className="mb-4 text-2xl font-semibold">{name}</h3>
@@ -109,12 +111,12 @@ const PlanCard: React.FC<PlanCard> = ({ name, reward, price, index }) => {
           </span>
         </li>
       </ul>
-      <a
-        href="#"
+      <Link
+        href={`plans/${id}`}
         className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-500 "
       >
         Buy Now
-      </a>
+      </Link>
     </div>
   );
 };
