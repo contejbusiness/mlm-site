@@ -18,33 +18,50 @@ import * as z from "zod";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
+import { startTransition, useTransition } from "react";
+import { createNewRedeem } from "@/app/_actions";
 
-type BillboardFormValues = z.infer<typeof formSchema>;
+type RedeemRequest = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
   amount: z.string().min(1),
+  bank: z.string().min(4),
 });
 
-const RedeemPage = () => {
+const RedeemForm = () => {
   const router = useRouter();
 
-  const form = useForm<BillboardFormValues>({
+  const [isPending, startTransition] = useTransition();
+
+  const form = useForm<RedeemRequest>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       amount: "",
+      bank: "",
     },
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: RedeemRequest) => {
     try {
       router.refresh();
-      router.push(`/balance`);
-      toast.success("Screenshot uploaded");
+
+      //@ts-ignore
+      startTransition(() => createNewRedeem());
+      // const response = await axios.post(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/api/usersv2/1/redeems`,
+      //   { amount: data.amount, bank: data.bank }
+      // );
+      //   router.push(`/balance`);
     } catch (error: any) {
+      console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
       toast.error("Something went wrong.");
     } finally {
     }
   };
+
+  if (isPending) {
+    return <p className="pending">Wait.....</p>;
+  }
 
   return (
     <Container>
@@ -52,6 +69,7 @@ const RedeemPage = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
+            // action={createRedeemRequest}
             className="space-y-8 w-full"
           >
             <div className="md:grid md:grid-cols-3 gap-8">
@@ -68,6 +86,19 @@ const RedeemPage = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="bank"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Bank UPI/Wallet</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter UPI ID" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             <Button className="ml-auto" type="submit">
               Send Request
@@ -79,4 +110,4 @@ const RedeemPage = () => {
   );
 };
 
-export default RedeemPage;
+export default RedeemForm;

@@ -1,4 +1,4 @@
-import getRedeems from "@/actions/get-redeems";
+import getRedeems from "@/actions/get-user";
 import ProductList from "@/components/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";

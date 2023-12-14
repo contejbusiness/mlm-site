@@ -1,6 +1,7 @@
+import { User } from "@/types";
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 
-const getRedeems = async (): Promise<any> => {
+const getCurrentUser = async (): Promise<User> => {
   try {
     const user = await currentUser();
 
@@ -9,8 +10,7 @@ const getRedeems = async (): Promise<any> => {
     }
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}//users?userId=${user.id}`
-      //   `${process.env.NEXT_PUBLIC_API_URL}/api/usersv2/${id}/redeems`
+      `${process.env.NEXT_PUBLIC_API_URL}/users?userId=${user.id}`
     );
 
     return res.json();
@@ -19,4 +19,4 @@ const getRedeems = async (): Promise<any> => {
   }
 };
 
-export default getRedeems;
+export default getCurrentUser;

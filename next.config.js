@@ -9,6 +9,9 @@ const nextConfig = {
       "cdn.dribbble.com",
     ],
   },
+  experimental: {
+    serverActions: true,
+  },
 };
 
 module.exports = nextConfig;

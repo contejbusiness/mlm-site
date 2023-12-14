@@ -1,8 +1,6 @@
-import React from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -10,7 +8,7 @@ import {
 } from "@/components/ui/table";
 import Currency from "@/components/ui/currency";
 
-const TableList = () => {
+const TableList = (redeems: any[]) => {
   return (
     <Table>
       <TableHeader>
@@ -22,13 +20,17 @@ const TableList = () => {
         </TableRow>
       </TableHeader>
       <TableBody className="bg-gray-100">
-        <TableRow>
-          <TableCell className="font-medium">10-12-2023</TableCell>
-          <TableCell>
-            <Currency value={50} />
-          </TableCell>
-          <TableCell className="text-right">Pending</TableCell>
-        </TableRow>
+        {redeems.map((redeem) => (
+          <TableRow key={redeem.id}>
+            <TableCell className="font-medium">
+              {new Date(redeem.createdAt).toLocaleDateString()}
+            </TableCell>
+            <TableCell>
+              <Currency value={redeem.amount} />
+            </TableCell>
+            <TableCell className="text-right">{redeem.status}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
