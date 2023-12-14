@@ -35,7 +35,9 @@ const BalancePage = async () => {
           {user.requests && user.requests.length > 0 ? (
             <TableList requests={user.requests} />
           ) : (
-            <div>No Redeems</div>
+            <div className="min-h-[400px] flex items-center justify-center w-full">
+              No Requests Made
+            </div>
           )}
         </div>
       </div>

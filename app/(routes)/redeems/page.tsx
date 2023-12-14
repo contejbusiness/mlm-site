@@ -17,7 +17,9 @@ const RedeemsPage = async () => {
         {user.redeems && user.redeems.length > 0 ? (
           <TableList redeems={user.redeems} />
         ) : (
-          <div>No Redeems</div>
+          <div className="min-h-[400px] flex items-center justify-center w-full">
+            No Referrals
+          </div>
         )}
       </div>
     </Container>
