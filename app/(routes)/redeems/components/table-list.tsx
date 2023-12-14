@@ -8,11 +8,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Currency from "@/components/ui/currency";
-import { User } from "@/types";
+import { Redeem, User } from "@/types";
 
 import { useEffect, useState } from "react";
 
-const TableList = (user: User) => {
+interface Props {
+  redeems: Redeem[];
+}
+
+const TableList: React.FC<Props> = ({ redeems }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -34,21 +38,17 @@ const TableList = (user: User) => {
         </TableRow>
       </TableHeader>
       <TableBody className="bg-gray-100">
-        {user.redeems && user.redeems.length > 0 ? (
-          user.redeems.map((redeem) => (
-            <TableRow key={redeem.id}>
-              <TableCell className="font-medium">
-                {new Date(redeem.createdAt).toLocaleDateString()}
-              </TableCell>
-              <TableCell>
-                <Currency value={redeem.amount} />
-              </TableCell>
-              <TableCell className="text-right">{redeem.status}</TableCell>
-            </TableRow>
-          ))
-        ) : (
-          <div>No Redeems</div>
-        )}
+        {redeems.map((redeem) => (
+          <TableRow key={redeem.id}>
+            <TableCell className="font-medium">
+              {new Date(redeem.createdAt).toLocaleDateString()}
+            </TableCell>
+            <TableCell>
+              <Currency value={redeem.amount} />
+            </TableCell>
+            <TableCell className="text-right">{redeem.status}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

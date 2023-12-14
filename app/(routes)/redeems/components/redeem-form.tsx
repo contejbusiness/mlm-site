@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
 import { startTransition, useTransition } from "react";
 import { createNewRedeem } from "@/app/_actions";
+import axios from "axios";
 
 type RedeemRequest = z.infer<typeof formSchema>;
 
@@ -45,13 +46,13 @@ const RedeemForm = () => {
     try {
       router.refresh();
 
+      await axios.post("/api/redeem", {
+        amount: data.amount,
+        bank: data.bank,
+      });
+
       //@ts-ignore
-      startTransition(() => createNewRedeem());
-      // const response = await axios.post(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/api/usersv2/1/redeems`,
-      //   { amount: data.amount, bank: data.bank }
-      // );
-      //   router.push(`/balance`);
+      //startTransition(() => createNewRedeem(data.amount, data.bank));
     } catch (error: any) {
       console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
       toast.error("Something went wrong.");
@@ -65,7 +66,7 @@ const RedeemForm = () => {
 
   return (
     <Container>
-      <div className="h-screen flex flex-col gap-8 p-4">
+      <div className="flex flex-col gap-8 p-4">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
