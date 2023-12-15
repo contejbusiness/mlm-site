@@ -1,10 +1,44 @@
 import Container from "@/components/ui/container";
+import { Separator } from "@/components/ui/separator";
+import { Plan, User } from "@/types";
 
-const PlanRefferalPage = () => {
+interface Props {
+  plan: Plan;
+  user: User;
+}
+
+const PlanRefferalPage: React.FC<Props> = ({ plan, user }) => {
   return (
     <Container>
-      <div className="min-h-screen w-full flex items-center justify-center">
-        You Already Have an Active Plan
+      <div className="w-full h-screen flex p-4 flex-col md:flex-row">
+        <h2 className="text-xl bold pb-8">Active Plan</h2>
+
+        <div className="bg-white p-8 rounded shadow-md w-full md:max-w-[500px]">
+          <table className="w-full ">
+            <tbody>
+              <tr className="border-b">
+                <td className="py-2 pr-4 text-gray-500 font-medium">Plan</td>
+                <td className="py-2 text-black">{plan.name}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2 pr-4 text-gray-500 font-medium">Reward</td>
+                <td className="py-2 text-black">{plan.reward}</td>
+              </tr>
+              <tr className="border-b">
+                <td className="py-2 pr-4 text-gray-500 font-medium">
+                  Total Referred
+                </td>
+                <td className="py-2 text-black">{user.referrals.length}</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4 text-gray-500 font-medium">
+                  Referral Code
+                </td>
+                <td className="py-2 text-black">{user.myRefferalCode}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </Container>
   );

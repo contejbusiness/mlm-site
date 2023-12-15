@@ -1,7 +1,6 @@
 import getPlan from "@/actions/get-plan";
 import getCurrentUser from "@/actions/get-user";
 import Container from "@/components/ui/container";
-import { Button } from "@/components/ui/v2/button";
 import BuyPlan from "./components/buy-plan";
 
 const Page = async ({ params }: { params: { planId: string } }) => {

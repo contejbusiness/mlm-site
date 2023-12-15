@@ -10,7 +10,7 @@ const PlanPage = async () => {
   const user = await getCurrentUser();
 
   if (user.plan != null) {
-    return <PlanRefferalPage />;
+    return <PlanRefferalPage plan={user.plan} user={user}/>;
   }
 
   return (

@@ -16,7 +16,11 @@ const BalancePage = async () => {
           <p>
             Scan the below QR to make payment <br />
             <strong className="text-red-500">
-              Send Screenshot of your payment for approval
+              Send Screenshot of your payment for approval -{" "}
+              <b>
+                Make Sure to Share a Correct Screenshot, Wrong Screenshot or
+                Amount can lead to Request Cancelation
+              </b>
             </strong>
           </p>
           <Image

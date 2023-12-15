@@ -21,7 +21,7 @@ const Navbar = () => {
     },
     {
       label: "Redeems",
-      href: "redeem",
+      href: "redeems",
     },
     {
       label: "Refferals",
