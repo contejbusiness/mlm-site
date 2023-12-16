@@ -10,7 +10,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Separator } from "@/components/ui/separator";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,9 +17,8 @@ import * as z from "zod";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
-import { startTransition, useTransition } from "react";
-import { createNewRedeem } from "@/app/_actions";
 import axios from "axios";
+import { useState } from "react";
 
 type RedeemRequest = z.infer<typeof formSchema>;
 
@@ -31,8 +29,7 @@ const formSchema = z.object({
 
 const RedeemForm = () => {
   const router = useRouter();
-
-  const [isPending, startTransition] = useTransition();
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<RedeemRequest>({
     resolver: zodResolver(formSchema),
@@ -44,25 +41,22 @@ const RedeemForm = () => {
 
   const onSubmit = async (data: RedeemRequest) => {
     try {
-      router.refresh();
+      setLoading(true);
 
       await axios.post("/api/redeem", {
         amount: data.amount,
         bank: data.bank,
       });
-
-      //@ts-ignore
-      //startTransition(() => createNewRedeem(data.amount, data.bank));
+      router.refresh();
+      router.push(`/redeems`);
+      toast.success("Request for Redeem Sent");
     } catch (error: any) {
       console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
       toast.error("Something went wrong.");
     } finally {
+      setLoading(false);
     }
   };
-
-  if (isPending) {
-    return <p className="pending">Wait.....</p>;
-  }
 
   return (
     <Container>
@@ -101,7 +95,7 @@ const RedeemForm = () => {
                 )}
               />
             </div>
-            <Button className="ml-auto" type="submit">
+            <Button className="ml-auto" type="submit" disabled={loading}>
               Send Request
             </Button>
           </form>

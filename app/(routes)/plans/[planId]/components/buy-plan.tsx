@@ -18,20 +18,27 @@ const BuyPlan: React.FC<Props> = ({ plan, user }) => {
 
   const onSubmit = async () => {
     try {
-      router.refresh();
+      setLoading(true);
 
       await axios.post("/api/plan", {
         planId: plan.id,
       });
+
+      router.refresh();
+      router.push(`/redeems`);
+      toast.success("Request for Redeem Sent");
     } catch (error: any) {
       console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
       toast.error("Something went wrong.");
     } finally {
+      setLoading(false);
     }
   };
   return (
     <div>
-      <Button onClick={onSubmit}>Buy Now</Button>
+      <Button onClick={onSubmit} disabled={loading}>
+        Buy Now
+      </Button>
     </div>
   );
 };

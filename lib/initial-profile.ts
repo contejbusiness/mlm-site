@@ -23,6 +23,10 @@ export const initialProfile = async () => {
     );
     return user_?.data;
   } catch (error) {
+    console.log(
+      "🚀 ~ file: initial-profile.ts:26 ~ initialProfile ~ error:",
+      error
+    );
     return redirectToSignIn();
   }
 };

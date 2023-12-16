@@ -20,7 +20,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
-import Image from "next/image";
 
 type BillboardFormValues = z.infer<typeof formSchema>;
 
@@ -47,6 +46,7 @@ const BalanceForm = () => {
 
       await axios.post(`/api/balance`, data);
 
+      router.push(`/balance`);
       router.refresh();
       toast.success("Screenshot uploaded");
     } catch (error: any) {

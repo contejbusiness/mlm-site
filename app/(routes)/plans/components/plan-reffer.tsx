@@ -10,7 +10,7 @@ interface Props {
 const PlanRefferalPage: React.FC<Props> = ({ plan, user }) => {
   return (
     <Container>
-      <div className="w-full h-screen flex p-4 flex-col md:flex-row">
+      <div className="w-full h-screen flex p-4 flex-col">
         <h2 className="text-xl bold pb-8">Active Plan</h2>
 
         <div className="bg-white p-8 rounded shadow-md w-full md:max-w-[500px]">
