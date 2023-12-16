@@ -7,6 +7,8 @@ import ToastProvider from "@/providers/toast-provider";
 import ModalProvider from "@/providers/modal-provider";
 import Navbar from "@/components/ui/v2/navbar";
 import { ClerkProvider } from "@clerk/nextjs";
+import getCurrentUser from "@/actions/get-user";
+import NavWrapper from "@/components/navwrapper";
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -27,7 +29,7 @@ export default function RootLayout({
           <ToastProvider />
           <ModalProvider />
           {/* <Navbar /> */}
-          <Navbar />
+          <NavWrapper />
           {children}
           <Footer />;
         </body>

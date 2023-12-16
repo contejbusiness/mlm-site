@@ -1,9 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, formatter } from "@/lib/utils";
+import { User } from "@/types";
 
-const Navbar = () => {
+interface Props {
+  user: User;
+}
+
+const Navbar: React.FC<Props> = ({ user }) => {
+  console.log("🚀 ~ file: navbar.tsx:12 ~ user:", user)
   const [isNavbarOpen, setNavbarOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -32,9 +38,26 @@ const Navbar = () => {
   return (
     <nav className="bg-white  border-b">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
-          <p className="font-bold text-xl">STORE</p>
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
+            <p className="font-bold text-xl">STORE</p>
+          </Link>
+
+          <span className="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-2 rounded me-2 dark:bg-gray-700 dark:text-gray-400 border border-gray-500 ">
+            {/* <svg
+              className="w-2.5 h-2.5 me-1.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
+            </svg> */}
+            {formatter.format(user.balance)}
+            {/* {1000} */}
+          </span>
+        </div>
+
         <button
           onClick={toggleNavbar}
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
