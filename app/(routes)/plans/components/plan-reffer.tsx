@@ -2,6 +2,7 @@ import Container from "@/components/ui/container";
 import { Separator } from "@/components/ui/separator";
 import { Plan, User } from "@/types";
 import TableList from "./table-list";
+import { formatter } from "@/lib/utils";
 
 interface Props {
   plan: Plan;
@@ -12,7 +13,13 @@ const PlanRefferalPage: React.FC<Props> = ({ plan, user }) => {
   return (
     <Container>
       <div className="w-full h-screen flex p-4 flex-col">
-        <h2 className="text-xl bold pb-8">Active Plan</h2>
+        <h2 className="text-xl bold pb-8">
+          Active Plan <br />{" "}
+          <span className="text-sm">
+            Earn {formatter.format(Number(plan.reward))} everytime reffered user
+            buys a plan
+          </span>
+        </h2>
 
         <div className="bg-white p-8 rounded shadow-md w-full md:max-w-[500px]">
           <table className="w-full ">
