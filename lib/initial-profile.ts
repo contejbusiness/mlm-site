@@ -14,7 +14,6 @@ export const initialProfile = async () => {
       id: user.id,
       name: user.firstName + " " + user.lastName,
       email: user?.emailAddresses[0]?.emailAddress,
-      phone: user?.phoneNumbers[0]?.phoneNumber,
     };
 
     const user_ = await axios.post<User>(
@@ -27,6 +26,6 @@ export const initialProfile = async () => {
       "🚀 ~ file: initial-profile.ts:26 ~ initialProfile ~ error:",
       error
     );
-    return redirectToSignIn();
+    return null;
   }
 };
