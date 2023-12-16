@@ -14,7 +14,13 @@ const BalancePage = async () => {
   const scanner = await getScanner();
 
   if (!scanner) {
-    return "No Scanner Found";
+    return (
+      <div className="min-h-[80vh] flex items-center">
+        <p className="w-full text-center underline text-3xl">
+          No Scanner Found
+        </p>
+      </div>
+    );
   }
 
   return (

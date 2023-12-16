@@ -56,7 +56,7 @@ const RedeemForm = () => {
       console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
       router.refresh();
       router.push(`/redeems`);
-      toast.error("Something went wrong.");
+      toast.error("You don't have Enough Balance.");
     } finally {
       setLoading(false);
     }

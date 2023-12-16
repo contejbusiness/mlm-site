@@ -25,7 +25,8 @@ import axios from "axios";
 type RefferRequest = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
-  code: z.string().min(4),
+  code: z.string(),
+  phone: z.string().min(10),
 });
 
 const RefferForm = () => {
@@ -36,6 +37,7 @@ const RefferForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       code: "",
+      phone: "",
     },
   });
 
@@ -45,7 +47,9 @@ const RefferForm = () => {
 
       await axios.post("/api/reffercode", {
         code: data.code,
+        phone: data.phone,
       });
+      router.refresh();
       router.push("/");
       toast.success("Reffer Code Applied");
     } catch (error: any) {
@@ -67,7 +71,7 @@ const RefferForm = () => {
         code: "0",
       });
       router.push("/");
-      toast.success("Reffer Code Applied");
+      toast.success("Profile Created");
     } catch (error: any) {
       console.log(
         "🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:",
@@ -91,10 +95,25 @@ const RefferForm = () => {
             <div className="md:grid md:grid-cols-3 gap-8">
               <FormField
                 control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter Phone Number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="code"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Referral Code</FormLabel>
+                    <FormLabel>
+                      Referral Code <b>(Leave Empty If Not Referred)</b>
+                    </FormLabel>
                     <FormControl>
                       <Input placeholder="Enter Referral Code" {...field} />
                     </FormControl>
@@ -109,9 +128,9 @@ const RefferForm = () => {
           </form>
         </Form>
 
-        <Button className="bg-red-500" disabled={loading} onClick={onCancel}>
+        {/* <Button className="bg-red-500" disabled={loading} onClick={onCancel}>
           No I dont have a Referral Code
-        </Button>
+        </Button> */}
       </div>
     </Container>
   );
