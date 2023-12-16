@@ -32,8 +32,6 @@ const RefferForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const [isPending, startTransition] = useTransition();
-
   const form = useForm<RefferRequest>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -112,7 +110,7 @@ const RefferForm = () => {
         </Form>
 
         <Button className="bg-red-500" disabled={loading} onClick={onCancel}>
-          No I don't have a Referral Code
+          No I dont have a Referral Code
         </Button>
       </div>
     </Container>

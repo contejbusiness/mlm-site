@@ -11,7 +11,7 @@ const Page = async ({ params }: { params: { planId: string } }) => {
   if (user.balance < plan.price)
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        You Don't Have Enough Balance to Buy this plan.
+        You Dont Have Enough Balance to Buy this plan.
       </div>
     );
 
