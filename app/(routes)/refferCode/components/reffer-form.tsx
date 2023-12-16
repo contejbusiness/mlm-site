@@ -18,8 +18,8 @@ import * as z from "zod";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
-import { startTransition, useState, useTransition } from "react";
-import { createNewRedeem } from "@/app/_actions";
+import { useState, useTransition } from "react";
+
 import axios from "axios";
 
 type RefferRequest = z.infer<typeof formSchema>;
@@ -46,7 +46,7 @@ const RefferForm = () => {
       setLoading(true);
 
       await axios.post("/api/reffercode", {
-        code: 12345,
+        code: data.code,
       });
       router.push("/");
       toast.success("Reffer Code Applied");
@@ -61,9 +61,25 @@ const RefferForm = () => {
     }
   };
 
-  if (isPending) {
-    return <p className="pending">Wait.....</p>;
-  }
+  const onCancel = async () => {
+    try {
+      setLoading(true);
+
+      await axios.post("/api/reffercode", {
+        code: "0",
+      });
+      router.push("/");
+      toast.success("Reffer Code Applied");
+    } catch (error: any) {
+      console.log(
+        "🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:",
+        error.response.statusText
+      );
+      toast.error("Invalid Referral Code");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Container>
@@ -95,7 +111,9 @@ const RefferForm = () => {
           </form>
         </Form>
 
-        <Button className="bg-red-500">No I don't have a Referral Code</Button>
+        <Button className="bg-red-500" disabled={loading} onClick={onCancel}>
+          No I don't have a Referral Code
+        </Button>
       </div>
     </Container>
   );

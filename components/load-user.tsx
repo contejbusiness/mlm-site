@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect } from "react";
-import useUserModal from "@/hooks/use-profile";
+
+import { User } from "@/types";
+import { useRouter } from "next/navigation";
 
 interface LoadUserComponentProps {
-  user: any;
+  user: User;
 }
 
 const LoadUserComponent: React.FC<LoadUserComponentProps> = ({ user }) => {
-  const { setUser } = useUserModal();
+  const router = useRouter();
 
-  useEffect(() => {
-    setUser(user);
-  }, [user]);
+  router.push("/refferCode");
 
   return <div></div>;
 };

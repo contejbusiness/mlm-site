@@ -10,7 +10,7 @@ const PlanPage = async () => {
   const user = await getCurrentUser();
 
   if (user.plan != null) {
-    return <PlanRefferalPage plan={user.plan} user={user}/>;
+    return <PlanRefferalPage plan={user.plan} user={user} />;
   }
 
   return (
@@ -30,8 +30,8 @@ const PlanPage = async () => {
               <PlanCard
                 id={plan.id}
                 name={plan.name}
-                price={plan.price}
-                reward={plan.reward}
+                price={String(plan.price)}
+                reward={String(plan.reward)}
                 index={index}
                 key={plan.id}
               />

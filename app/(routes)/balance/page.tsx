@@ -6,8 +6,13 @@ import TableList from "./components/table-list";
 import BalanceForm from "./components/balance-form";
 import getCurrentUser from "@/actions/get-user";
 
+import getScanner from "@/actions/get-scanner";
+
 const BalancePage = async () => {
   const user = await getCurrentUser();
+
+  const scanner = await getScanner();
+  console.log("🚀 ~ file: page.tsx:15 ~ BalancePage ~ scanner:", scanner);
 
   return (
     <Container>
@@ -24,10 +29,10 @@ const BalancePage = async () => {
             </strong>
           </p>
           <Image
-            src="https://cdn.dribbble.com/userupload/3108360/file/original-077339caa9e3b1972bedde17c4e6159e.jpg?resize=700x525&vertical=center"
+            src={scanner.imageUrl}
             alt="QR Code"
-            width={500}
-            height={500}
+            width={400}
+            height={400}
           />
         </div>
 

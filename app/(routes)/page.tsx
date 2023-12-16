@@ -10,7 +10,11 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   try {
-    await initialProfile();
+    const user = await initialProfile();
+    console.log(user.referredById);
+    if (user.referredById === null) {
+      return <LoadUserComponent user={user} />;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -235,7 +239,7 @@ const HomePage = async () => {
           <ProductList title="Trending Products" items={products} />
         </div>
       </div>
-      <LoadUserComponent user={user} />
+      {/* <LoadUserComponent user={user} /> */}
     </Container>
   );
 };
