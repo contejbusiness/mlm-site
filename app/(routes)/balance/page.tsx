@@ -12,7 +12,10 @@ const BalancePage = async () => {
   const user = await getCurrentUser();
 
   const scanner = await getScanner();
-  console.log("🚀 ~ file: page.tsx:15 ~ BalancePage ~ scanner:", scanner);
+
+  if (!scanner) {
+    return "No Scanner Found";
+  }
 
   return (
     <Container>

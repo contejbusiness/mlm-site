@@ -7,7 +7,7 @@ const getScanner = async (): Promise<Scanner> => {
     console.log("🚀 ~ file: get-scanner.tsx:7 ~ getScanner ~ res:", res);
     return res.json();
   } catch (error: any) {
-    throw new Error(error);
+    return error;
   }
 };
 
