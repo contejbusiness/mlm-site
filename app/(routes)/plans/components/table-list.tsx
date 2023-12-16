@@ -20,8 +20,8 @@ const TableList: React.FC<Props> = ({ referrals, reward }) => {
       <TableHeader>
         <TableRow className="bg-gray-900 text-white">
           <TableHead className="text-white">Name</TableHead>
-          <TableHead className="text-white">Amount</TableHead>
-
+          <TableHead className="text-white">Reward</TableHead>
+          <TableHead className="text-right text-white">Plan</TableHead>
           <TableHead className="text-right text-white">Date</TableHead>
         </TableRow>
       </TableHeader>
@@ -30,10 +30,14 @@ const TableList: React.FC<Props> = ({ referrals, reward }) => {
           <TableRow key={referral.id}>
             <TableCell className="font-medium">{referral.name}</TableCell>
             <TableCell>
-              <Currency value={reward} />
+              <Currency value={referral.plan != null ? reward : 0} />
+            </TableCell>
+            <TableCell>
+              <Currency
+                value={referral.plan != null ? referral.plan.name : "-"}
+              />
             </TableCell>
             <TableCell className="text-right">
-              {" "}
               {new Date(referral.createdAt).toLocaleDateString()}
             </TableCell>
           </TableRow>
