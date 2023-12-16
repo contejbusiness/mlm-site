@@ -7,7 +7,7 @@ const NavWrapper = async () => {
   const user = await getCurrentUser();
 
   if (user.error) {
-    return <h1>Failed to Get User</h1>;
+    return <div></div>;
   }
 
   return (
