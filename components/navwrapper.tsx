@@ -6,9 +6,7 @@ import { redirectToSignIn } from "@clerk/nextjs";
 const NavWrapper = async () => {
   const user = await getCurrentUser();
 
-  if (user.error) {
-    return <div></div>;
-  }
+  if (!user) return "";
 
   return (
     <div>
