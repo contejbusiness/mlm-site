@@ -42,6 +42,7 @@ const BalancePage = async () => {
             alt="QR Code"
             width={400}
             height={400}
+            fill
           />
         </div>
 
