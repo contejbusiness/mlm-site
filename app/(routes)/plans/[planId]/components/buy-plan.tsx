@@ -25,8 +25,8 @@ const BuyPlan: React.FC<Props> = ({ plan, user }) => {
       });
 
       router.refresh();
-      router.push(`/redeems`);
-      toast.success("Request for Redeem Sent");
+      router.push(`/plans`);
+      toast.success("Plan Purchased");
     } catch (error: any) {
       console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
       toast.error("Something went wrong.");

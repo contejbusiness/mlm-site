@@ -24,8 +24,6 @@ export async function POST(req: Request) {
       }
     );
 
-    revalidatePath("/");
-
     return NextResponse.json(response.data);
   } catch (error) {
     console.log("🚀 ~ file: route.ts:27 ~ POST ~ error:", error);
