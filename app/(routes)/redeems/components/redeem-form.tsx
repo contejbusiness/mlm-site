@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/v2/button";
 import axios from "axios";
 import { useState } from "react";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 type RedeemRequest = z.infer<typeof formSchema>;
 
@@ -30,6 +31,7 @@ const formSchema = z.object({
 const RedeemForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const form = useForm<RedeemRequest>({
     resolver: zodResolver(formSchema),
@@ -60,6 +62,12 @@ const RedeemForm = () => {
 
   return (
     <Container>
+      {/* <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onSubmit}
+        loading={loading}
+      /> */}
       <div className="flex flex-col gap-8 p-4">
         <Form {...form}>
           <form
