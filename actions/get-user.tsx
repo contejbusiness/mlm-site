@@ -15,7 +15,7 @@ const getCurrentUser = async (): Promise<User> => {
 
     return res.json();
   } catch (error: any) {
-    throw new Error(error);
+    return error;
   }
 };
 
