@@ -54,6 +54,8 @@ const RedeemForm = () => {
       toast.success("Request for Redeem Sent");
     } catch (error: any) {
       console.log("🚀 ~ file: redeem-form.tsx:51 ~ onSubmit ~ error:", error);
+      router.refresh();
+      router.push(`/redeems`);
       toast.error("Something went wrong.");
     } finally {
       setLoading(false);

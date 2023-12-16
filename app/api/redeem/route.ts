@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       }
     );
 
-    return NextResponse.json(response);
+    return NextResponse.json(response.data);
   } catch (error) {
     console.log("🚀 ~ file: route.ts:27 ~ POST ~ error:", error);
     return new NextResponse("Failed to redeem", { status: 500 });
