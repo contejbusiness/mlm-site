@@ -7,10 +7,8 @@ import { revalidatePath } from "next/cache";
 export async function POST(req: Request) {
   try {
     const { userId }: { userId: string | null } = auth();
-    console.log("🚀 ~ file: route.ts:10 ~ POST ~ userId:", userId);
 
     const { planId } = await req.json();
-    console.log("🚀 ~ file: route.ts:12 ~ POST ~ planId:", planId);
 
     if (!userId) return new NextResponse("Unauthorized", { status: 401 });
 
