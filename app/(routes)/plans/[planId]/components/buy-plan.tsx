@@ -1,5 +1,6 @@
 "use client";
 
+import { AlertModal } from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/v2/button";
 import { Plan, User } from "@/types";
 import axios from "axios";
@@ -15,7 +16,7 @@ interface Props {
 const BuyPlan: React.FC<Props> = ({ plan, user }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
+  const [open, setOpen] = useState(false);
   const onSubmit = async () => {
     try {
       setLoading(true);
@@ -36,7 +37,13 @@ const BuyPlan: React.FC<Props> = ({ plan, user }) => {
   };
   return (
     <div>
-      <Button onClick={onSubmit} disabled={loading}>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onSubmit}
+        loading={loading}
+      />
+      <Button onClick={() => setOpen(true)} disabled={loading}>
         Buy Now
       </Button>
     </div>

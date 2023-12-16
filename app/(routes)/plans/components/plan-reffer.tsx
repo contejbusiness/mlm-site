@@ -1,6 +1,7 @@
 import Container from "@/components/ui/container";
 import { Separator } from "@/components/ui/separator";
 import { Plan, User } from "@/types";
+import TableList from "./table-list";
 
 interface Props {
   plan: Plan;
@@ -39,6 +40,10 @@ const PlanRefferalPage: React.FC<Props> = ({ plan, user }) => {
             </tbody>
           </table>
         </div>
+
+        <h2 className="text-xl bold py-12">Recent Referrals</h2>
+
+        <TableList referrals={user.referrals} reward={plan.reward} />
       </div>
     </Container>
   );
