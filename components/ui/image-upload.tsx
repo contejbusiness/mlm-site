@@ -56,28 +56,25 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </div>
         ))}
       </div>
-      {value.length <= 0 && (
-        <CldUploadWidget onUpload={onUpload} uploadPreset="kcy8uyy7">
-          {({ open }) => {
-            const onClick = () => {
-              open();
-            };
+      <CldUploadWidget onUpload={onUpload} uploadPreset="kcy8uyy7">
+        {({ open }) => {
+          const onClick = () => {
+            open();
+          };
 
-            return (
-              <Button
-                type="button"
-                disabled={disabled}
-                variant="secondary"
-                onClick={onClick}
-                className="py-16 px-6 border border-dashed"
-              >
-                <ImagePlus className="h-4 w-4 mr-2" />
-                Upload Screenshot
-              </Button>
-            );
-          }}
-        </CldUploadWidget>
-      )}
+          return (
+            <Button
+              type="button"
+              disabled={disabled}
+              variant="secondary"
+              onClick={onClick}
+            >
+              <ImagePlus className="h-4 w-4 mr-2" />
+              Upload an Image
+            </Button>
+          );
+        }}
+      </CldUploadWidget>
     </div>
   );
 };

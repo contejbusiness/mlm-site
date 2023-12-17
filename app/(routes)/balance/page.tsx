@@ -3,10 +3,12 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
 import TableList from "./components/table-list";
-import BalanceForm from "./components/balance-form";
+
 import getCurrentUser from "@/actions/get-user";
 
 import getScanner from "@/actions/get-scanner";
+import { BillboardFormNew } from "@/components/ui/v2/newbalance-form";
+// import BalanceForm from "./components/balance-form";
 
 const BalancePage = async () => {
   const user = await getCurrentUser();
@@ -47,7 +49,8 @@ const BalancePage = async () => {
 
         <Separator />
 
-        <BalanceForm />
+        {/* <BalanceForm /> */}
+        <BillboardFormNew />
 
         <div className="p-4">
           {user.requests && user.requests.length > 0 ? (

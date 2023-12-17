@@ -64,7 +64,7 @@ const BalanceForm = () => {
           name="imageUrl"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your Payment Screenshot</FormLabel>
+              <FormLabel>Background image</FormLabel>
               <FormControl>
                 <ImageUpload
                   value={field.value ? [field.value] : []}
