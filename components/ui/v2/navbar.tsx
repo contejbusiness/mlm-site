@@ -39,7 +39,7 @@ const Navbar: React.FC<Props> = ({ user }) => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="flex items-center gap-4">
           <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
-            <p className="font-bold text-xl">STORE</p>
+            <p className="font-bold text-xl">Balance</p>
           </Link>
 
           <span className="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-2 rounded me-2 dark:bg-gray-700 dark:text-gray-400 border border-gray-500 ">
