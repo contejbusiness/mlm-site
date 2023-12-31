@@ -3,25 +3,24 @@ import ProductList from "@/components/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
 import { initialProfile } from "@/lib/initial-profile";
-import { redirectToSignIn } from "@clerk/nextjs";
 import LoadUserComponent from "@/components/load-user";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
   try {
-    const user = await initialProfile();
-    console.log(user.referredById);
-    if (user.referredById === null) {
-      return <LoadUserComponent user={user} />;
-    }
+    // const user = await initialProfile();
+    // console.log(user.referredById);
+    // if (user.referredById === null) {
+    //   return <LoadUserComponent user={user} />;
+    // }
   } catch (error) {
     console.log(error);
   }
 
   const user = await getRedeems();
   if (!user) {
-    redirectToSignIn();
+    //redirectToSignIn();
   }
 
   let _images = [
