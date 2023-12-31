@@ -9,11 +9,11 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   try {
-    // const user = await initialProfile();
+    const user = await initialProfile();
     // console.log(user.referredById);
-    // if (user.referredById === null) {
-    //   return <LoadUserComponent user={user} />;
-    // }
+    if (user?.referredById === null) {
+      return <LoadUserComponent user={user} />;
+    }
   } catch (error) {
     console.log(error);
   }

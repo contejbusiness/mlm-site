@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { cn, formatter } from "@/lib/utils";
 import { User } from "@/types";
-import { UserButton } from "@clerk/nextjs";
 
 interface Props {
   user: User;
@@ -95,7 +94,7 @@ const Navbar: React.FC<Props> = ({ user }) => {
               </Link>
             ))}
             <div className="py-2 px-3 md:p-0 flex items-center gap-4">
-              <UserButton afterSignOutUrl="/" />
+              {/* <UserButton afterSignOutUrl="/" /> */}
               <p className="md:hidden">Profile</p>
             </div>
           </ul>

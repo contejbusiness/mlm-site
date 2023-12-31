@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
 
-import { auth } from "@clerk/nextjs";
-
 export async function POST(req: Request) {
   try {
-    const { userId }: { userId: string | null } = auth();
+    const { getUser } = getKindeServerSession();
+    const userId = getUser().id;
 
     const { amount, bank } = await req.json();
 

@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
 
-import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export async function POST(req: Request) {
   try {
-    const { userId }: { userId: string | null } = auth();
+    // const { userId }: { userId: string | null } = auth();
+    const { getUser } = getKindeServerSession();
+    const userId = getUser().id;
 
     const { code, phone } = await req.json();
 
@@ -14,10 +16,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "UserId is Missing" }, { status: 400 });
 
     if (!phone)
-      return NextResponse.json(
-        { error: "Phone Number is Required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Name is Required" }, { status: 400 });
 
     const response = await axios.patch(
       `${process.env.NEXT_PUBLIC_API_URL}/usersv2/${userId}`,

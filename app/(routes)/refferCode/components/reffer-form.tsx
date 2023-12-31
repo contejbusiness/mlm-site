@@ -98,9 +98,9 @@ const RefferForm = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel>Your Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter Phone Number" {...field} />
+                      <Input placeholder="Enter Your Name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
