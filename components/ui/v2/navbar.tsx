@@ -25,7 +25,7 @@ const Navbar: React.FC<Props> = ({ user }) => {
       href: "balance",
     },
     {
-      label: "Redeems",
+      label: "Withdrawal",
       href: "redeems",
     },
     // {

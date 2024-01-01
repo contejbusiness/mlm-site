@@ -14,13 +14,13 @@ const RedeemsPage = async () => {
 
         <Separator />
 
-        <h2 className="text-xl bold pt-6 pb-2 px-2">Recent Redeems</h2>
+        <h2 className="text-xl bold pt-6 pb-2 px-2">Recent Withdrawals</h2>
         <div className="p-2">
           {user.redeems && user.redeems.length > 0 ? (
             <TableList redeems={user.redeems} />
           ) : (
             <div className="min-h-[400px] flex items-center justify-center w-full">
-              No Redeem Requests
+              No Withdrawals
             </div>
           )}
         </div>

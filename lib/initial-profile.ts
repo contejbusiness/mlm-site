@@ -1,12 +1,11 @@
 import { User } from "@/types";
 import axios from "axios";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 
 export const initialProfile = async () => {
   try {
-    const { getUser, isAuthenticated } = getKindeServerSession();
-
-    console.log("Initial profile");
+    const { getUser } = getKindeServerSession();
 
     const user = getUser();
     console.log(
@@ -15,13 +14,13 @@ export const initialProfile = async () => {
     );
 
     if (!user) {
-      // return redirectToSignIn();
+      redirect("/api/auth/login");
     }
 
     const createUser = {
       id: user.id,
       name: user.given_name + " " + user.family_name,
-      email: "kindle@dummy.com",
+      email: "test@email.com",
     };
 
     const user_ = await axios.post<User>(

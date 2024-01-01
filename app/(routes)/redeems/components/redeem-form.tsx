@@ -85,7 +85,7 @@ const RedeemForm = () => {
                   <FormItem>
                     <FormLabel>Amount</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter Redeem Amount" {...field} />
+                      <Input placeholder="Enter Withdrawal Amount" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -105,6 +105,8 @@ const RedeemForm = () => {
                 )}
               />
             </div>
+            <p>10% Tax will be deducted from withdrawal amount.</p>
+
             <Button className="ml-auto" type="submit" disabled={loading}>
               Send Request
             </Button>

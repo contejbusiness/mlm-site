@@ -19,6 +19,10 @@ const PlanRefferalPage: React.FC<Props> = ({ plan, user }) => {
             Earn {formatter.format(Number(plan.reward))} everytime reffered user
             buys a plan
           </span>
+          <br />
+          <span className="text-sm font-bold">
+            Earn {formatter.format(plan.price * 0.05)} every day
+          </span>
         </h2>
 
         <div className="bg-white p-8 rounded shadow-md w-full md:max-w-[500px]">
